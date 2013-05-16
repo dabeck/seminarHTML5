@@ -1,7 +1,7 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Drag & Drop<br>File API',
+    title: 'Drag & Drop- und File API',
     subtitle: 'Seminar HTML5',
     eventInfo: {
      title: 'Präsentation',
