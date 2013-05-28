@@ -60,7 +60,6 @@ URL: https://code.google.com/p/io-2012-slides
                         <ul class="build">
                             <li>einfache Beispiele</li>
                             <li>komplexe Anwendungsfälle</li> <!-- (Cross-Browser DnD) -->
-                            <li>mobile Browser und Drag & Drop</li>
                             <li>Unterschiede bei Browsern</li>
                         </ul>
                     </li>
@@ -343,14 +342,14 @@ dragend     //gezogenes Element
                     <h3>mit HTML5</h3>
                 </hgroup>
                 <article style="margin:0;">
-                    <p>Des weiteren muss man mit CSS-Tricks arbeiten:</p>
+                    <p>Des Weiteren muss man mit CSS-Tricks arbeiten:</p>
 <pre class="prettyprint" data-lang="css">
 #container {
     background: #DDD;
     height: 100px;
     width: 390px;
-    <b>-moz-user-select: none;
-   -webkit-user-select: none;</b>
+    <b>-moz-user-select: none;</b>
+    <b>-webkit-user-select: none;</b>
 }
 </pre>
 <pre class="prettyprint" data-lang="html">
@@ -388,7 +387,146 @@ dragend     //gezogenes Element
                 </div>
             </article>
         </slide>
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Warum nun eine Implementierung mit der API?</h2>
+            </hgroup>
+            <article>
+                <ul class="build">
+                    <li>alle Browser arbeiten mit der gleichen Schnittstelle*</li>
+                    <li>alle Websiten nutzen die gleiche Schnittstelle*</li>
+                    <li>die Ausführgeschwindigkeit ist deutlisch schneller</li>
+                </ul>
+                <footer class="source">
+                * in der Theorie
+                </footer>
+            </article>
+        </slide>
 
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                        <li>Grundsätzlich kann man sagen, dass alle modernen Desktop-Browser DnD unterstütztn</li>
+                        <li>IE (2011) und Opera (06.2012) sehr spät!</li>
+                        <li>Mobile Browser nicht möglich!
+                            Hier gibt es möglichkeiten mit JS (z.B. jQuery UI)!!
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Drag&Drop Kompatibilität</h2>
+            </hgroup>
+            <article>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Chrome 6+</th>
+                        <th>Firefox 3.6+</th>
+                        <th>IE 10+</th>
+                        <th>Opera 12.0+</th>
+                        <th>Safari 5+</th>
+                        <th>iOS</th>
+                        <th>Android</th>
+                    </tr>
+                    <tr>
+                        <td>draggable -attribut</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondrag -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondragstart -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondragenter -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondragover -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondragleave -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondragend -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                    <tr>
+                        <td>ondrop -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+
+                    </tr>
+                </table>
+            </article>
+        </slide>
 
             <!-- <article>
                 <p>A list where items build:</p>
@@ -407,7 +545,7 @@ dragend     //gezogenes Element
                     <li>Hover over me!</li>
                 </ul>
             </article> -->
-        <slide>
+<!--        <slide>
             <hgroup>
                 <h2>Slide with (Smaller Font)</h2>
             </hgroup>
@@ -697,7 +835,7 @@ dragend     //gezogenes Element
             <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
         </article>
     </slide>
-
+-->
     <slide class="thank-you-slide segue nobackground">
         <aside class="gdbar right"><img src="images/HTML5_Badge_128.png"></aside>
         <article class="flexbox vleft auto-fadein">
