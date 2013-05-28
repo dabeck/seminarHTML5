@@ -1,0 +1,54 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		height: 100px;
+		width: 390px;
+	}
+
+	#dragme {
+		background: #78BA91;
+		cursor: move;
+		height: 40px;
+		left: 0;
+		top: 0;
+		width: 40px;
+	}
+
+	.dropme {
+		background: #6B7B95;
+		float: left;
+		height: 60px;
+		margin-left: 20px;
+		margin-top: 20px;
+		width: 72px;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="dragme" draggable="true" ondragstart="drag(event)"></div>
+		
+		<div class="dropme" ondrop="drop(event)" ondragover="dropPermitted(event)"></div>
+		<div class="dropme" ondrop="drop(event)" ondragover="dropPermitted(event)"></div>
+		<div class="dropme" ondrop="drop(event)" ondragover="dropPermitted(event)"></div>
+		<div class="dropme" ondrop="drop(event)" ondragover="dropPermitted(event)"></div>
+	</div>
+	<script>
+	function dropPermitted(ev){
+		ev.preventDefault();
+	}
+
+	function drag(ev){
+		ev.dataTransfer.setData("Text",ev.target.id);
+	}
+
+	function drop(ev){
+		ev.preventDefault();
+		var data=ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+	</script>
+</body>
+</html>

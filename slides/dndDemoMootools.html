@@ -1,0 +1,51 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		height: 100px;
+		width: 390px
+	}
+	
+	#dragme {
+		background: #78BA91;
+		cursor: move;
+		height: 40px;
+		left: 0;
+		top: 0;
+		width: 40px;
+	}
+	
+	.dropme {
+		background: #6B7B95;
+		float: left;
+		height: 60px;
+		margin-left: 20px;
+		margin-top: 20px;
+		width: 72px;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="dragme"></div>
+		
+		<div class="dropme"></div>
+		<div class="dropme"></div>
+		<div class="dropme"></div>
+		<div class="dropme"></div>
+	</div>
+	<script src="http://mootools.net/demos/Source/mootools-core-1.4-full.js" type="text/javascript"></script>
+	<script src="http://mootools.net/demos/Source/mootools-more-1.4-full.js" type="text/javascript"></script>
+
+	<script>
+	new Drag.Move($('dragme'), {
+		droppables: $$('.dropme'),
+		onDrop: function(element, droppable){
+			if (droppable) droppable.setStyle('background', '#C17878');
+		}
+
+	});
+	</script>
+</body>
+</html>

@@ -109,10 +109,197 @@ URL: https://code.google.com/p/io-2012-slides
 		</slide>
 
 		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li><b>im Internet Explorer konnte man Text/URLs in die Adresszeile ziehen!</b></li>
+						<li>Grund für die Aufnahme in HTML5 Safari und Mozilla hatten Implementierung vom Internet Explorer übernommen</li>
+						<li>Standardisierung bestehender Techniken: Qualität hin oder her</li>
+						<li>Ian "Hixie" Hickson ist Autor und Betreuer der Acid2 und Acid3-Tests und der HTML 5-Spezifikation.</li>
+					</ul>
+				</section>
+			</aside>
 			<hgroup>
 				<h2>geschichtlicher Hintergrund</h2>
 			</hgroup>
 			<article>
+				<ul class="build">
+					<li>stammt ursprünglich aus dem Internet Explorer 5</li>
+					<li>galt als missraten</li>
+					<li>Grund für die Aufnahme:</li>
+					<ul class="build">
+						<li>Safari und Firefox übernahmen die Techologie vom IE*</li>
+						<li>Standardisierung bestehender Techniken</li>
+					</ul>
+				</ul>
+			</article>
+			<article class="flexbox vcenter" style="height:initial">
+				<img src="images/tweet1.png" class="reflect" alt="Tweet" title="Description">
+				<footer class="source">Quelle: 
+					<a href="https://twitter.com/Hixie/status/4075253361">https://twitter.com/Hixie/status/4075253361</a>
+				</footer>
+			</article>
+
+		</slide>
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Ian Hickson erfand das Attribut draggable um mehr als nur (markierte) Bilder und Text zu ziehen.</li>
+						<li>er schrieb es in  die HTML5 spezifikation</li>
+						<li>Zunächst nur im FF mittlerweile in jedem Browser implementiert</li>
+						<li>Drag&Drop API stellt ausgeklügelte Formen des Datentransfers während der Operation bereit  was mit JS nicht möglich ist!</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Was machte eine Implementierung nötig?</h2>
+			</hgroup>
+			<article>
+				<ul class="build">
+					<li>mehr möglichkeiten als nur Text und Bilder verschieben:</li>
+					<ul class="build">
+						<li>Cross-Website Drag&Drop</li>
+						<li>Cross-Browser Drag&Drop</li>
+						<li>Browser-Betriebsystem Drag&Drop</li>
+					</ul>
+					<li>ausgeklügeltere Formen des Datentransfers beim Drag&Drop:</li>
+					<ul class="build">
+						<li>Welche Art von Element/Daten wird verschoben?</li>
+						<li>Wohin dürfen bestimmte Elemente gezogen werden?</li>
+					</ul>
+				</ul>
+			</article>
+		</slide>
+
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Speziell für komplexere Anwendungsfälle geeignet.</li>
+						<li>JavaScript für einfache Anwendungsfälle immernoch ausreichend</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Was sind die Unterschiede zu den Möglichkeiten mit JavaScript?</h2>
+			</hgroup>
+			<article>
+				<ul class="build">
+					<li>Webseiten werden untereinander interoperabel</li>
+					<li>Desktop- und Onlineapplikationen werden kompatibel</li>
+					<li>Betriebsystemfunktionen wie Tastenkombinationen bei Drag&Drop sind möglich.</li>
+					<li>Zusammenarbeit mit der File-API erlaubt einfache Datei-Uploads</li>
+					<li>man ist auf keine externen Bibliotheken angewiesen</li>	
+				</ul>
+			</article>
+		</slide>
+
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Derart simples D&D ist mit HTML5 ungleich schwerer.</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Drag&Drop Implementierung</h2>
+				<h3>mit MooTools (JavaScript)</h3>
+			</hgroup>
+			<article>
+				<p>Drag&Drop des Element 'dragme' auf Element 'dropme' mit wenigen Zeilen:</p>
+				
+				<pre class="prettyprint" data-lang="html">
+					&lt;div id="dragme"&gt;&lt;/div&gt;
+					&lt;div class="dropme"&gt;&lt;/div&gt;
+				</pre>
+				<pre class="prettyprint" data-lang="javascript">
+					&lt;script&gt;
+					new Drag.Move(<b>'dragme'</b>, {
+					    droppables: <b>'.dropme'</b>,
+					    onDrop: function(element, droppable, event) {
+					        // do something
+					    }
+					});
+					&lt;/script&gt;
+			</pre>
+			</article>
+		</slide>
+				
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Beispiel der MooTools implementierung</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Drag&Drop Implementierung</h2>
+				<h3>mit MooTools (JavaScript)</h3>
+			</hgroup>
+			<article>
+				<p>Demo der MooTools-Implementierung:</p>
+				<div class="centered" style="margin-top:2em">
+					<iframe data-src="/dndDemoMootools.html" style="height:120px;width:410px;"></iframe>
+				</div>
+			</article>
+		</slide>
+
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Beispiel der MooTools implementierung jetzt mit HTML5 ungleich komplizierter</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Drag&Drop Implementierung</h2>
+				<h3>mit HTML5</h3>
+			</hgroup>
+			<article style="margin:0;">
+				<pre class="prettyprint" data-lang="html">
+					&lt;div id="dragme" draggable="true" ondragstart="drag(event)"&gt;&lt;/div&gt;
+					&lt;div class="dropme" ondrop="drop(event)" ondragover="dropPermitted(event)&gt;&lt;/div&gt;
+				</pre>
+				<pre class="prettyprint" data-lang="javascript">
+					&lt;script&gt;
+					function dropPermitted(ev) { ev.preventDefault(); }
+
+					function drag(ev) { ev.dataTransfer.setData("Text",ev.target.id); }
+
+					function drop(ev){
+					    ev.preventDefault();
+					    var data=ev.dataTransfer.getData("Text");
+					    ev.target.appendChild(document.getElementById(data));
+					}
+					&lt;/script&gt;
+				</pre>
+			</article>
+		</slide>
+
+		<slide>
+			<aside class="note">
+				<section>
+					<ul>
+						<li>Beispiel der HTML5 implementierung</li>
+					</ul>
+				</section>
+			</aside>
+			<hgroup>
+				<h2>Drag&Drop Implementierung</h2>
+				<h3>mit HTML5</h3>
+			</hgroup>
+			<article>
+				<p>Demo der HTML5-Implementierung:</p>
+				<div class="centered" style="margin-top:2em">
+					<iframe data-src="/dndDemoHtml5.html" style="height:150px;width:410px;"></iframe>
+				</div>
+			</article>
+		</slide>
+			<!-- <article>
 				<p>A list where items build:</p>
 				<ul class="build">
 					<li>Pressing 'h' highlights code snippets</li>
@@ -128,9 +315,7 @@ URL: https://code.google.com/p/io-2012-slides
 					<li>Hover over me!</li>
 					<li>Hover over me!</li>
 				</ul>
-			</article>
-		</slide>
-
+			</article> -->
 		<slide>
 			<hgroup>
 				<h2>Slide with (Smaller Font)</h2>
