@@ -231,7 +231,7 @@ URL: https://code.google.com/p/io-2012-slides
 &lt;div id="dragme"&gt;&lt;/div&gt;
 &lt;div class="dropme"&gt;&lt;/div&gt;
 </pre>
-<pre class="prettyprint" data-lang="javascript">
+<pre class="prettyprint" data-lang="JavaScript">
 &lt;script&gt;
     new Drag.Move(<b>'dragme'</b>, {
         droppables: <b>'.dropme'</b>,
@@ -327,7 +327,7 @@ dragend     //gezogenes Element
 &lt;div id="dragme" <b>draggable</b>="true" <b>ondragstart</b>="drag(event)"&gt;&lt;/div&gt;
 &lt;div class="dropme" <b>ondrop</b>="drop(event)" <b>ondragover</b>="dropPermitted(event)"&gt;&lt;/div&gt;
                 </pre>
-                <pre class="prettyprint" data-lang="javascript">
+                <pre class="prettyprint" data-lang="JavaScript">
 &lt;script&gt;
     function dropPermitted(ev){ 
         ev.preventDefault();
@@ -718,11 +718,17 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h3>FileLists</h3>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                 	<li>Auswahl der Datei über input oder Drag & Drop</li>
                 	<li>FileList-Objekt repräsentiert Datei(en)</li>
-                	<li></li>
                 </ul>
+
+<pre class="prettyprint" data-lang="Javascript">
+document.getElementById('upload').onchange = function() {
+	console.log(<b>this.files</b>);	
+};
+</pre>
+<iframe data-src="fileListDemo.html" style="max-height:230px;"></iframe>
             </article>
         </slide>
 

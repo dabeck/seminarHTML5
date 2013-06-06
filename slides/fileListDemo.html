@@ -1,0 +1,46 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input type="file" id="upload">
+
+		<pre id="console"></pre>
+	</div>
+
+	<script>
+		var log = document.getElementById('console');
+		var output;
+
+		var print = function(o){
+		    var str='';
+
+		    for(var p in o){
+		        if(typeof o[p] == 'string' ||
+		           typeof o[p].getMonth === 'function' ||
+		           typeof o[p] == 'number')
+		        {
+		            str+= p + ': ' + o[p]+'; <br>';
+		        }
+		        else
+		        {
+		            str+= p + ': {<br>' + print(o[p]) + '} <br>';
+		        }
+		    }
+
+		    return str;
+		}
+
+		document.getElementById('upload').onchange = function() {
+			log.innerHTML = print(this.files);
+		};
+	</script>
+</body>
+</html>
