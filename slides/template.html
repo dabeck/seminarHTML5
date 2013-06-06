@@ -12,10 +12,10 @@ URL: https://code.google.com/p/io-2012-slides
     <title></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!--This one seems to work all the time, but really small on ipad-->
-    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="viewport" content="initial-scale=0.4">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" media="all" href="theme/css/seminar.css">
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
@@ -42,15 +42,28 @@ URL: https://code.google.com/p/io-2012-slides
             </hgroup>
         </slide>
 
+		<slide>
+            <hgroup>
+                <h2>Übersicht</h2>
+            </hgroup>
+            <article class="vcenter">
+                <ul class="build">
+                    <li>Drag & Drop API</li>
+                    <li>File API<li>
+                    <li>Symbiose beider API's</li>
+                    <li>Fazit</li>
+                </ul>
+            </article>
+        </slide>
         <slide>
             <hgroup>
                 <h2>Einleitung</h2>
-                <h3>Drag & Drop</h3>
+                <h3>Drag & Drop API</h3>
             </hgroup>
             <article>
                 <ul class="build">
                     <li>Was ist Drag & Drop?</li>
-                    <li>Geschichte
+                    <li>Geschichte der API
                         <ul class="build">
                             <li>Was machte eine Implementierung in HTML5 nötig?</li>
                             <li>Unterschied zu den Möglichkeiten mit JavaScript?</li>
@@ -59,10 +72,11 @@ URL: https://code.google.com/p/io-2012-slides
                     <li>Möglichkeiten
                         <ul class="build">
                             <li>einfache Beispiele</li>
-                            <li>komplexe Anwendungsfälle</li> <!-- (Cross-Browser DnD) -->
+<!--                             <li>komplexe Anwendungsfälle</li> <!-- (Cross-Browser DnD) -->
                             <li>Unterschiede bei Browsern</li>
                         </ul>
                     </li>
+                    <li>Bekannte Einsatzbereich</li>
                     <li>Fazit</li>
                 </ul>
             </article>
@@ -147,7 +161,7 @@ URL: https://code.google.com/p/io-2012-slides
                         <li>Ian Hickson erfand das Attribut draggable um mehr als nur (markierte) Bilder und Text zu ziehen.</li>
                         <li>er schrieb es in  die HTML5 spezifikation</li>
                         <li>Zunächst nur im FF mittlerweile in jedem Browser implementiert</li>
-                        <li>Drag&Drop API stellt ausgeklügelte Formen des Datentransfers während der Operation bereit  was mit JS nicht möglich ist!</li>
+                        <li>Drag & Drop API stellt ausgeklügelte Formen des Datentransfers während der Operation bereit  was mit JS nicht möglich ist!</li>
                     </ul>
                 </section>
             </aside>
@@ -158,11 +172,11 @@ URL: https://code.google.com/p/io-2012-slides
                 <ul class="build">
                     <li>mehr Möglichkeiten als nur Text und Bilder verschieben:</li>
                     <ul class="build">
-                        <li>Cross-Website Drag&Drop</li>
-                        <li>Cross-Browser Drag&Drop</li>
-                        <li>Browser-Betriebsystem Drag&Drop</li>
+                        <li>Cross-Website Drag & Drop</li>
+                        <li>Cross-Browser Drag & Drop</li>
+                        <li>Browser-Betriebsystem Drag & Drop</li>
                     </ul>
-                    <li>ausgeklügeltere Formen des Datentransfers beim Drag&Drop:</li>
+                    <li>ausgeklügeltere Formen des Datentransfers beim Drag & Drop:</li>
                     <ul class="build">
                         <li>Welche Art von Element/Daten wird verschoben?</li>
                         <li>Wohin dürfen bestimmte Elemente gezogen werden?</li>
@@ -203,11 +217,11 @@ URL: https://code.google.com/p/io-2012-slides
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Implementierung</h2>
+                <h2>Implementierung</h2>
                 <h3>mit MooTools (JavaScript)</h3>
             </hgroup>
             <article>
-                <p>Drag&Drop des Element 'dragme' auf Element 'dropme' mit wenigen Zeilen:</p>
+                <p>Drag & Drop des Element 'dragme' auf Element 'dropme' mit wenigen Zeilen:</p>
                 
 <pre class="prettyprint" data-lang="html">
 &lt;div id="dragme"&gt;&lt;/div&gt;
@@ -235,7 +249,7 @@ URL: https://code.google.com/p/io-2012-slides
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Implementierung</h2>
+                <h2>Implementierung</h2>
                 <h3>mit MooTools (JavaScript)</h3>
             </hgroup>
             <article>
@@ -257,11 +271,11 @@ URL: https://code.google.com/p/io-2012-slides
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Implementierung</h2>
+                <h2>Implementierung</h2>
                 <h3>mit HTML5</h3>
             </hgroup>
             <article class="smaller">
-                <p>Es gibt ingesamt sieben Events im Zusammenhang mit Drag&Drop:</p>
+                <p>Es gibt ingesamt sieben Events im Zusammenhang mit Drag & Drop:</p>
                 <pre class="prettyprint">
 <b>dragstart  //gezogenes Element</b>
 
@@ -301,7 +315,7 @@ dragend     //gezogenes Element
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Implementierung</h2>
+                <h2>Implementierung</h2>
                 <h3>mit HTML5</h3>
             </hgroup>
             <article class="smaller" style="margin:0;">
@@ -338,7 +352,7 @@ dragend     //gezogenes Element
                     </section>
                 </aside>
                 <hgroup>
-                    <h2>Drag&Drop Implementierung</h2>
+                    <h2>Implementierung</h2>
                     <h3>mit HTML5</h3>
                 </hgroup>
                 <article style="margin:0;">
@@ -377,7 +391,7 @@ dragend     //gezogenes Element
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Implementierung</h2>
+                <h2>Implementierung</h2>
                 <h3>mit HTML5</h3>
             </hgroup>
             <article>
@@ -422,7 +436,7 @@ dragend     //gezogenes Element
                 </section>
             </aside>
             <hgroup>
-                <h2>Drag&Drop Kompatibilität</h2>
+                <h2>Kompatibilität</h2>
             </hgroup>
             <article>
                 <table>
@@ -525,6 +539,94 @@ dragend     //gezogenes Element
 
                     </tr>
                 </table>
+            </article>
+        </slide>
+
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                        <li>viele Anbieter setzen auf DnD</li>
+                        <li>vorallem Datei- und Bilderdienste</li>
+                        <li>bekanntes Beispiel: Dropbox, Gmail, Youtube</li>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Einsatzbereiche</h2>
+            </hgroup>
+            <article class="flexbox vcenter">
+            	<div style="_height:500px; width:700px;text-align:center;">
+			   <a href="http://twitter.com" style="font-size:22px;border:none; color: #FF7600;">twitter</a>  
+			   <a href="http://eventcommander.com" style="font-size:36px;border:none; color: #FF7600;">EventCommander</a>  
+			   <a href="http://dropbox.com" style="font-size:22px;border:none; color: #87A800;">dropbox</a>  
+			   <a href="http://youtube.com" style="font-size:31px;border:none; color: #FF7600;">Youtube</a>  
+			   <a href="http://outlook.com" style="font-size:40px;border:none; color: #87A800;">Outlook</a>  
+			   <a href="http://" style="font-size:33px;border:none; color: #87A800;">Games</a>  
+			   <a href="http://github.com" style="font-size:40px;border:none; color: #039FAF;">Github</a>  
+			   <a href="http://microsoft.com" style="font-size:40px;border:none; color: #DE2159;">Microsoft</a>  
+			   <a href="http://wordpress.com" style="font-size:38px;border:none; color: #87A800;">Wordpress</a>  
+			   <a href="http://facebook.com" style="font-size:31px;border:none; color: #DE2159;">Facebook</a>  
+			   <a href="http://icloud.com" style="font-size:36px;border:none; color: #DE2159;">iCloud</a>  
+			   <a href="http://mockingbirg.com" style="font-size:29px;border:none; color: #FF7600;">Mockingbird</a>  
+			   <a href="http://apple.com" style="font-size:31px;border:none; color: #FF7600;">Apple</a>  
+			   <a href="http://amazon.com" style="font-size:40px;border:none; color: #039FAF;">Amazon</a>  
+			   <a href="http://godaddy.com" style="font-size:27px;border:none; color: #FF7600;">Go Daddy</a>  
+			   <a href="http://aws.amazon.com" style="font-size:24px;border:none; color: #039FAF;">AWS</a>  
+			   <a href="http://cloudsigma.com" style="font-size:24px;border:none; color: #DE2159;">CoudSigma</a>  
+			   <a href="http://rapidshare.com" style="font-size:20px;border:none; color: #039FAF;">Rapidshare</a>  
+			   <a href="http://joomla.org" style="font-size:36px;border:none; color: #DE2159;">Joomla</a>  
+			   <a href="http://gravatar.com" style="font-size:31px;border:none; color: #039FAF;">Gravatar</a>  
+			   <a href="http://flickr.com" style="font-size:33px;border:none; color: #FF7600;">flickr</a>  
+			   <a href="http://gmail.com" style="font-size:31px;border:none; color: #039FAF;">Gmail</a>  
+			   <a href="http://netflix.com" style="font-size:24px;border:none; color: #039FAF;">Netflix</a>  
+			</div>
+
+			<!-- 
+
+Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twitter     Amazon     Joomla     AWS     EventCommander     Github     Wordpress     Gravatar     Apple     Rapidshare     flickr     Youtube     Facebook     Go Daddy     iCloud     CoudSigma     Games  
+
+			 -->
+            </article>
+        </slide>
+
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Drag & Drop</h2>
+                <h3>Fazit</h3>
+            </hgroup>
+            <article>
+                <ul class="build">
+                    <li>TODO...</li>
+                </ul>
+            </article>
+        </slide>
+
+        <slide>
+            <hgroup>
+                <h2>Einleitung</h2>
+                <h3>File API</h3>
+            </hgroup>
+            <article>
+                <ul class="build">
+                    <li>Was ist die File API?</li>
+                    <li>Wie wurden bisher Dateien verarbeitet?</li>
+                    <li>Was wurde mit der File API verbessert?</li>
+                    <li>Möglichkeiten
+                        <ul class="build">
+                            <li>einfache Beispiele</li>
+                            <li>Unterschiede bei Browsern</li>
+                        </ul>
+                    </li>
+                    <li>Bekannte Anwendungsgebiete</li>
+                    <li>Fazit</li>
+                </ul>
             </article>
         </slide>
 
