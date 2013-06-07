@@ -1,0 +1,73 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+	}
+
+	#upload {
+		padding: 50px 0;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<strong>
+			<div id="upload">< drag a file over here ></div>
+		</strong>
+		
+		<pre id="console"></pre>
+	</div>
+
+	<script>
+		var log = document.getElementById('console');
+		var upload = document.getElementById('upload');
+		var output;
+
+		var print = function(o){
+		    var str='';
+
+		    for(var p in o){
+		        if(typeof o[p] == 'string' ||
+		           typeof o[p].getMonth === 'function' ||
+		           typeof o[p] == 'number')
+		        {
+		            str+= p + ': ' + o[p]+'; <br>';
+		        }
+		        else
+		        {
+		            str+= p + ': {<br>' + print(o[p]) + '} <br>';
+		        }
+		    }
+
+		    return str;
+		}
+
+		upload.ondragenter = function() {
+			upload.innerHTML = "< drop it now! >";
+			upload.style.backgroundColor = "yellow";
+		}
+
+		upload.ondragleave = function() {
+			upload.innerHTML = "< drag a file over here >";
+			upload.style.backgroundColor = "#DDD";
+		}
+
+		upload.ondragover = function(event) {
+			event.preventDefault();
+		};
+
+		upload.ondrop = function(event) {
+			upload.innerHTML = "< done! - you could drag another file >";
+			upload.style.backgroundColor = "green";
+
+			console.log(event.dataTransfer.files);
+			log.innerHTML = print(event.dataTransfer.files);
+			event.preventDefault();
+		};
+	</script>
+</body>
+</html>

@@ -21,6 +21,9 @@ URL: https://code.google.com/p/io-2012-slides
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
     <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
     <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+
+                	<style type="text/css">td {padding: 0.75em 0.5em!important;}</style>
+
 </head>
 <body style="opacity: 0">
 
@@ -57,7 +60,7 @@ URL: https://code.google.com/p/io-2012-slides
         </slide>
         <slide>
             <hgroup>
-                <h2>Einleitung</h2>
+                <h2>Übersicht</h2>
                 <h3>Drag & Drop API</h3>
             </hgroup>
             <article>
@@ -240,7 +243,7 @@ URL: https://code.google.com/p/io-2012-slides
         }
     });
 &lt;/script&gt;
-            </pre>
+</pre>
             </article>
         </slide>
                 
@@ -295,7 +298,7 @@ dragleave   //vorheriges Ziel-Element
 <b>drop       //aktuelles Ziel-Element</b>
 
 dragend     //gezogenes Element 
-                </pre>
+</pre>
 
             </article>
         </slide>
@@ -322,11 +325,11 @@ dragend     //gezogenes Element
                 <h2>Implementierung</h2>
                 <h3>mit HTML5</h3>
             </hgroup>
-            <article class="smaller" style="margin:0;">
+            <article class="smaller">
                 <pre class="prettyprint" data-lang="html">
 &lt;div id="dragme" <b>draggable</b>="true" <b>ondragstart</b>="drag(event)"&gt;&lt;/div&gt;
 &lt;div class="dropme" <b>ondrop</b>="drop(event)" <b>ondragover</b>="dropPermitted(event)"&gt;&lt;/div&gt;
-                </pre>
+</pre>
                 <pre class="prettyprint" data-lang="JavaScript">
 &lt;script&gt;
     function dropPermitted(ev){ 
@@ -343,7 +346,7 @@ dragend     //gezogenes Element
         ev.target.appendChild(document.getElementById(data));
     }
 &lt;/script&gt;
-                </pre>
+</pre>
             </article>
         </slide>
 
@@ -543,6 +546,7 @@ dragend     //gezogenes Element
 
                     </tr>
                 </table>
+                <footer class="source">Quelle: <a href="http://html5test.com">http://html5test.com</a></footer>
             </article>
         </slide>
 
@@ -614,7 +618,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
 
         <slide>
             <hgroup>
-                <h2>Einleitung</h2>
+                <h2>Übersicht</h2>
                 <h3>File API</h3>
             </hgroup>
             <article>
@@ -694,11 +698,20 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
             </hgroup>
             <article>
                 <ul class="build">
-                    <li>FileLists</li>
-                    <li>Dateien einlesen</li>
-                    <li>Dateien verarbeiten</li>
-                    <li>Dateien zerteilen</li>
-                    <li>Dateien speichern</li>
+                    <li>FileLists
+                    	<ul>
+                    		<li>File-Objekte</li>
+                    		<li>Datei-Eigenschaften</li>
+		                    <li>Dateien zerteilen</li>
+                    	</ul>
+                    </li>
+                    <li>FileReader
+                    	<ul>
+                    		<li>FileReader-Events</li>
+		                    <li>Dateien einlesen</li>
+		                    <li>Dateien verarbeiten</li>
+                    	</ul>
+                    </li>
                 </ul>
             </article>
         </slide>
@@ -710,6 +723,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 		<li>FileLists ermöglichen es mehrere Dateien zu verarbeiten</li>
                 		<li>Asynchrones einlesen einer/mehrerer Dateien</li>
                 		<li>verarbeiten von Dateien heißt: ID3-Tag auslesen, EXIF-Daten auslesen, ZIP-Datei generieren</li>
+                		<li>Hier wird nur eine Datei gefählt weil das "multiple"-Attribut fehlt.</li>
                 	</ul>
                 </section>
             </aside>
@@ -723,15 +737,201 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 	<li>FileList-Objekt repräsentiert Datei(en)</li>
                 </ul>
 
-<pre class="prettyprint" data-lang="Javascript">
+				<pre class="prettyprint" data-lang="Javascript">
 document.getElementById('upload').onchange = function() {
-	console.log(<b>this.files</b>);	
+    console.log(<b>this.files</b>);	
 };
 </pre>
 <iframe data-src="fileListDemo.html" style="max-height:230px;"></iframe>
             </article>
         </slide>
 
+
+ <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>Dateien und Blobs</h3>
+            </hgroup>
+            <article>
+                <ul>
+                	<li>TODO...</li>
+                </ul>
+            </article>
+        </slide>
+
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                        <li>Was bietet der FileReader?</li>
+                        <li>Es gibt 6 file events!</li>
+                        <li>wichtig sind: progress und load</li>
+                        <li>vorsicht es geht hier NUR um lokalen progress/events! dies hat nichts mit upload zu tun</li>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>FileReader-Events</h2>
+            </hgroup>
+            <article class="smaller">
+                <p>Es gibt ingesamt sechs Events im Zusammenhang mit der File API:</p>
+                <pre class="prettyprint">
+loadstart  //wenn der Einleiseprozess startet
+
+progress   //jedes eingelesene Byte oder nach 50ms
+
+abort      //wenn das Einlesen abgebrochen wird
+
+error      //wenn ein Fehler auftritt
+
+load       //wenn der Einleseprozess erfolgreich abeschlossen ist
+
+loadend    //wenn der Einladeprozess beendet ist
+</pre>
+
+            </article>
+        </slide>
+
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                        <li>Grundsätzlich kann man sagen, dass alle modernen Desktop-Browser DnD unterstütztn</li>
+                        <li>IE (2011) und Opera (06.2012) sehr spät!</li>
+                        <li>Mobile Browser nicht möglich!
+                            Hier gibt es möglichkeiten mit JS (z.B. jQuery UI)!!
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Kompatibilität</h2>
+            </hgroup>
+            <article>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Chrome 6+</th>
+                        <th>Firefox 3.6+</th>
+                        <th>IE 10+</th>
+                        <th>Opera 11.1+</th>
+                        <th>Safari 6+</th>
+                        <th>iOS 6.0+</th>
+                        <th>Android 3.2+</th>
+                    </tr>
+                    <tr>
+                        <td>loadstart -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                    <tr>
+                        <td>progress -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                    <tr>
+                        <td>abort -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                    <tr>
+                        <td>error -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                    <tr>
+                        <td>load -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                    <tr>
+                        <td>loadend -event</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+                    </tr>
+                </table>
+                <br>
+                <p style="font-size:16px;">Aktuell unterstützt nur die neuste Chrome-Version synchrone FileReader.</p>
+                <footer class="source">Quelle: <a href="http://html5test.com">http://html5test.com</a></footer>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Beide APIs sind wie für einander geschaffen</li>
+                		<li>Datei in ein Fenster ziehen --> mit FileAPI weiter verarbeiten</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Symbiose zwischen Drag & Drop und File API?</h2>
+            </hgroup>
+            <article>
+                <ul>
+                	<li>Todo ...</li>
+                	<li>Demo ...</li>
+                </ul>
+                <iframe data-src="fileListDndDemo.html" style="max-height:330px;"></iframe>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Fazit</h2>
+            </hgroup>
+            <article>
+                <ul class="build">
+                	<li>Todo ...</li>
+                </ul>
+            </article>
+        </slide>
         <!-- 
         <slide>
             <article>

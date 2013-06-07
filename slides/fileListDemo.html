@@ -39,6 +39,7 @@
 		}
 
 		document.getElementById('upload').onchange = function() {
+			console.log(this.files);
 			log.innerHTML = print(this.files);
 		};
 	</script>
