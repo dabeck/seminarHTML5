@@ -1,0 +1,99 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<button id="createButton">Create File</button>
+
+		<pre id="console"></pre>
+	</div>
+
+	<script>
+		var log = document.getElementById('console');
+		var output;
+
+		var print = function(o){
+		    var str='';
+
+		    for(var p in o){
+		        if(typeof o[p] == 'string' ||
+		           typeof o[p].getMonth === 'function' ||
+		           typeof o[p] == 'number')
+		        {
+		            str+= p + ': ' + o[p]+'; <br>';
+		        }
+		        else
+		        {
+		            str+= p + ': {<br>' + print(o[p]) + '} <br>';
+		        }
+		    }
+
+		    return str;
+		}
+
+
+		window.requestFileSystem  = window.webkitRequestFileSystem;
+	 
+		window.requestFileSystem(window.PERSISTENT, 1024*1024, initFS, errorHandler);
+
+		var fileSystem;
+	 
+		function initFS(fs){
+
+		  // place the functions you will learn bellow here
+		  fileSystem = fs;
+		}
+		 
+
+		document.getElementById('createButton').onclick = function() {
+			var fs = fileSystem;
+			
+			fs.root.getFile('test.txt', {create: true, exclusive: false}, function(fileEntry) {
+				fileEntry.createWriter(function(fileWriter) {
+
+					var blob = new Blob(['Hello World!'], {type: 'text/plain'});
+
+			      	fileWriter.write(blob);
+			    }, errorHandler);
+			}, errorHandler);
+
+			log.innerHTML = 'File created';
+		};
+
+		function errorHandler(err){
+			 var msg = 'An error occured: ';
+			 
+			  switch (err.code) { 
+			    case FileError.NOT_FOUND_ERR: 
+			      msg += 'File or directory not found'; 
+			      break;
+			 
+			    case FileError.NOT_READABLE_ERR: 
+			      msg += 'File or directory not readable'; 
+			      break;
+			 
+			    case FileError.PATH_EXISTS_ERR: 
+			      msg += 'File or directory already exists'; 
+			      break;
+			 
+			    case FileError.TYPE_MISMATCH_ERR: 
+			      msg += 'Invalid filetype'; 
+			      break;
+			 
+			    default:
+			      msg += 'Unknown Error'; 
+			      break;
+			  };
+			 console.log(err);
+			 console.log(msg);
+			};
+	</script>
+</body>
+</html>

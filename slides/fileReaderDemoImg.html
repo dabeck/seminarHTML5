@@ -1,0 +1,56 @@
+<html>
+<head>
+	<style type="text/css">
+	#container {
+		background: #DDD;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+	}
+	img {
+		max-height: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input type="file" id="upload">
+
+		<pre id="console"></pre>
+	</div>
+
+	<script>
+		var log = document.getElementById('console');
+		var output;
+
+		var print = function(o){
+		    var str='';
+
+		    for(var p in o){
+		        if(typeof o[p] == 'string' ||
+		           typeof o[p].getMonth === 'function' ||
+		           typeof o[p] == 'number')
+		        {
+		            str+= p + ': ' + o[p]+'; <br>';
+		        }
+		        else
+		        {
+		            str+= p + ': {<br>' + print(o[p]) + '} <br>';
+		        }
+		    }
+
+		    return str;
+		}
+
+		document.getElementById('upload').onchange = function() {
+			var file = this.files.item(0);
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onloadend = function() {
+
+				log.innerHTML += '\nContent:\n' + ['<img src="', this.result,'">'].join('') + '\n:Content';
+			};
+		};
+	</script>
+</body>
+</html>

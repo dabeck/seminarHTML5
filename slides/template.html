@@ -21,8 +21,8 @@ URL: https://code.google.com/p/io-2012-slides
     <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
     <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
     <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
-
-                	<style type="text/css">td {padding: 0.75em 0.5em!important;}</style>
+	
+	<style type="text/css">td {padding: 0.75em 0.5em!important;}</style>
 
 </head>
 <body style="opacity: 0">
@@ -50,10 +50,10 @@ URL: https://code.google.com/p/io-2012-slides
                 <h2>Übersicht</h2>
             </hgroup>
             <article class="vcenter">
-                <ul class="build">
+                <ul>
                     <li>Drag & Drop API</li>
                     <li>File API<li>
-                    <li>Symbiose beider API's</li>
+                    <li>Symbiose beider APIs</li>
                     <li>Fazit</li>
                 </ul>
             </article>
@@ -64,22 +64,22 @@ URL: https://code.google.com/p/io-2012-slides
                 <h3>Drag & Drop API</h3>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>Was ist Drag & Drop?</li>
                     <li>Geschichte der API
-                        <ul class="build">
+                        <ul>
                             <li>Was machte eine Implementierung in HTML5 nötig?</li>
                             <li>Unterschied zu den Möglichkeiten mit JavaScript?</li>
                         </ul>
                     </li>
                     <li>Möglichkeiten
-                        <ul class="build">
+                        <ul>
                             <li>einfache Beispiele</li>
 <!--                             <li>komplexe Anwendungsfälle</li> <!-- (Cross-Browser DnD) -->
                             <li>Unterschiede bei Browsern</li>
                         </ul>
                     </li>
-                    <li>Bekannte Einsatzbereich</li>
+                    <li>Bekannte Einsatzbereiche</li>
                     <li>Fazit</li>
                 </ul>
             </article>
@@ -611,7 +611,12 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
             </hgroup>
             <article>
                 <ul class="build">
-                    <li>TODO...</li>
+                    <li>Kompliziert einzusetzen</li>
+                    <li>mehr Möglichkeiten</li>
+                    <li>Kompatibilitätsvorteile</li>
+                    <li>Performancevorteile</li>
+                    <li>für einfache Anwendungen unpraktikabel</li>
+                    <li>am besten eine Mischung aus Bibliothek und DnD API verwenden</li>
                 </ul>
             </article>
         </slide>
@@ -632,6 +637,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                             <li>Unterschiede bei Browsern</li>
                         </ul>
                     </li>
+                    <li>Sicherheitskonzepte der FileAPI</li>
                     <li>Bekannte Anwendungsgebiete</li>
                     <li>Fazit</li>
                 </ul>
@@ -648,7 +654,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h2>Was ist die File API?</h2>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>Dateibehandlung</li>
                     <li>Dateiverarbeitung</li>
                     <li>Dateistatus</li>
@@ -687,6 +693,8 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
         	<aside class="note">
                 <section>
                 	<ul>
+                		<li>API unterteilt sich in 3 wesentliche APIs</li>
+                		<li>Daneben gibt es: BlobBuilder, DirectoryReader, FileEntry/DirectoryEntry, LocalFileSystem</li>
                 		<li>FileLists ermöglichen es mehrere Dateien zu verarbeiten</li>
                 		<li>Asynchrones einlesen einer/mehrerer Dateien</li>
                 		<li>verarbeiten von Dateien heißt: ID3-Tag auslesen, EXIF-Daten auslesen, ZIP-Datei generieren</li>
@@ -707,9 +715,14 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                     </li>
                     <li>FileReader
                     	<ul>
-                    		<li>FileReader-Events</li>
 		                    <li>Dateien einlesen</li>
 		                    <li>Dateien verarbeiten</li>
+                    	</ul>
+                    </li>
+                    <li>FileWriter
+                    	<ul>
+                    		<li>Dateien verarbeiten</li>
+                    		<li>Dateien schreiben</li>
                     	</ul>
                     </li>
                 </ul>
@@ -747,7 +760,7 @@ document.getElementById('upload').onchange = function() {
         </slide>
 
 
-		 <slide>
+		 <slide hidden>
         	<aside class="note">
                 <section>
                 	<ul>
@@ -760,7 +773,7 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>TODO...</li>
+
                 </ul>
             </article>
         </slide>
@@ -778,7 +791,11 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>TODO...</li>
+                	<li>Jede Datei wird zunächst als BLOB abgebildet</li>
+                	<li>Quasi eine art Rohdaten-Objekt</li>
+                	<li>BLOB: Binary Large Object</li>
+                	<li>File-Object "erbt" von Blob</li>
+                	<li>seltener benötigt</li>
                 </ul>
             </article>
         </slide>
@@ -792,11 +809,13 @@ document.getElementById('upload').onchange = function() {
             </aside>
             <hgroup>
                 <h2>Möglichkeiten</h2>
-                <h3>Dateien</h3>
+                <h3>Files</h3>
             </hgroup>
             <article>
                 <ul>
-                	<li>TODO...</li>
+                	<li>Dateien werden durch File-Object repräsentiert</li>
+                	<li>Abkömmlinge von Blobs</li>
+                	<li>bieten zusätzliche Methoden und Eigenschaften</li>
                 </ul>
             </article>
         </slide>
@@ -814,7 +833,65 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>TODO...</li>
+                	<li>stellt Methoden zum einlesen bereit</li>
+                	<li>alle Dateioperationen durchführbar</li>
+                	<li>Text oder Binärdateien</li>
+                </ul>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Erster Parameter ist ein FileObjekt (oder Blob)</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileReader</h3>
+            </hgroup>
+            <article>
+                <ul>
+                	<li>stellt folgende Einlesemethoden bereit:</li>
+                </ul>
+                <pre class="prettyprint">
+readAsArrayBuffer(file);          //Binärdaten in Typed Array einlesen
+
+readAsBinaryString(file);   	//Inhalt in Binärstring einlesen
+
+readAsDataURL(file);              //Inhalt als Data-URL einlesen
+
+readAsText(file, [, charset]);		//Inhalt als Text einlesen
+</pre>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Folgender ablauf beim Einlesevorgang</li>
+                		<li>FileReader ermöglicht es auch Synchron einzulesen wenn man mit WebWorkers arbeitet</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileReader</h3>
+            </hgroup>
+            <article>
+                <ul>
+                	<li>Einlesevorgang ist bei allen Methoden gleich:
+                		<ul>
+                			<li>FileReader beginnt Objekt einzulesen</li>
+                			<li>Status des Objekts ändert sich während dessen</li>
+                			<li>eingelesener Inhalt wird in "result" bereit gestellt</li>
+                		</ul>
+                	</li><br>
+                	<li>während dem Vorgang lässt sich der Status abfragen</li>
+                	<li>der Vorgang läuft grundsätzlich asynchron ab</li>
                 </ul>
             </article>
         </slide>
@@ -831,10 +908,12 @@ document.getElementById('upload').onchange = function() {
                 </section>
             </aside>
             <hgroup>
-                <h2>FileReader-Events</h2>
+                <h2>Möglichkeiten</h2>
+                <h3>FileReader</h3>
             </hgroup>
-            <article class="smaller">
-                <p>Es gibt ingesamt sechs Events im Zusammenhang mit der File API:</p>
+            <article>
+            	<br>
+                <p>Es gibt ingesamt sechs Events im Zusammenhang mit dem FileReader:</p>
                 <pre class="prettyprint">
 loadstart  //wenn der Einleiseprozess startet
 
@@ -853,6 +932,58 @@ loadend    //wenn der Einladeprozess beendet ist
         </slide>
 
         <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Wie sieht der Einleseprozess genau aus?</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileReader</h3>
+            </hgroup>
+            <article class="smaller">
+				<pre class="prettyprint" data-lang="Javascript">
+document.getElementById('upload').onchange = function() {
+    var file = this.files.item(0);
+    var reader = new FileReader();
+    <b>reader.readAsText(file);</b>
+
+    reader.onloadend = function() {
+        log.innerHTML += '\nContent:\n' + this.result + '\n:Content';
+    };
+};
+</pre>
+<iframe data-src="fileReaderDemo.html" style="max-height:200px;"></iframe>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Ein Beispiel mit Bild!</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileReader</h3>
+            </hgroup>
+            <article class="smaller">
+				<pre class="prettyprint" data-lang="Javascript">
+[...]
+    
+    <b>reader.readAsDataURL(file);</b>
+
+[...]
+</pre>
+<iframe data-src="fileReaderDemoImg.html" style="max-height:280px;"></iframe>
+            </article>
+        </slide>
+
+                <slide>
             <aside class="note">
                 <section>
                     <ul>
@@ -866,6 +997,7 @@ loadend    //wenn der Einladeprozess beendet ist
             </aside>
             <hgroup>
                 <h2>Kompatibilität</h2>
+                <h3>FileReader</h3>
             </hgroup>
             <article>
                 <table>
@@ -952,6 +1084,189 @@ loadend    //wenn der Einladeprozess beendet ist
         </slide>
 
         <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>PERSISTENT gekennzeichneter Speicher muss vom Nutzer die Berechtigt werden</li>
+                		<li>TEMPORARY nicht, da es gelöscht werden kann</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+                <ul>
+                	<li>stellt Methoden zum schreiben bereit</li>
+                	<li>schreiben von Temporären oder Persistenten Daten</li>
+                	<li>aktuell noch Experimentell</li>
+                </ul>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+            	<ul class="build">
+            		<li>Zunächst muss ein "FileSystemRequest" gestartet werden</li>
+            		<li>damit fordert man Speicher an</li>
+            		<li>ist dies erfolgt wird initFS(fs); gerufen</li>
+            		<li>jetzt hat man Zugriff auf eine Sandbox</li>
+            	</ul>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Fordere 1MB speicher an!</li>
+                		<li></li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+            	<p>Speicherkontingent anfordern:</p>
+				<pre class="prettyprint" data-lang="Javascript">
+window.requestFileSystem  = window.webkitRequestFileSystem;
+	 
+window.requestFileSystem(window.PERSISTENT, 1024*1024, initFS, errorHandler);
+	 
+function initFS(fs){ }
+</pre>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Datei anlegen wenn sie nicht existiert</li>
+                		<li>ansonsten überschreiben</li>
+                		<li>"exclusive" heißt nicht überschreiben</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+            	<p>Datei speichern:</p>
+				<pre class="prettyprint" data-lang="Javascript">
+function initFS(fs){ 
+    fs.root.getFile('test.txt', {create: true, exclusive: false}, function(fileEntry) {
+        fileEntry.createWriter(function(fileWriter) {
+	        
+            var blob = new Blob(['Hello World!'], {type: 'text/plain'});
+            fileWriter.write(blob);
+
+        }, errorHandler);
+
+    }, errorHandler);
+}
+</pre>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>Ein Beispiel mit Bild!</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Möglichkeiten</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+            	<p>Demo (funktioniert nur in Chrome): </p>
+<iframe data-src="fileWriterDemo.html" style="max-height:100px;"></iframe>
+            </article>
+        </slide>
+
+        <slide>
+            <aside class="note">
+                <section>
+                    <ul>
+                        <li>Grundsätzlich kann man sagen, dass alle modernen Desktop-Browser DnD unterstütztn</li>
+                        <li>IE (2011) und Opera (06.2012) sehr spät!</li>
+                        <li>Mobile Browser nicht möglich!
+                            Hier gibt es möglichkeiten mit JS (z.B. jQuery UI)!!
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Kompatibilität</h2>
+                <h3>FileWriter</h3>
+            </hgroup>
+            <article>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Chrome 8+</th>
+                        <th>Firefox</th>
+                        <th>IE</th>
+                        <th>Opera 15</th>
+                        <th>Safari</th>
+                        <th>Opera Mobile</th>
+                        <th>Chrome 25 for Android</th>
+                    </tr>
+                    <tr>
+                        <td>FileWriter</td>
+                        <td class="green">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="red">Nein</td>
+                        <td class="yellow">Ja</td>
+                        <td class="red">Nein</td>
+                        <td class="green">Ja</td>
+                        <td class="green">Ja</td>
+
+                    </tr>
+                </table>
+                <br>
+                <footer class="source">Quelle: <a href="http://caniuse.com/#feat=filesystem">http://caniuse.com/#feat=filesystem</a></footer>
+            </article>
+        </slide>
+
+        <slide>
+        	<aside class="note">
+                <section>
+                	<ul>
+                		<li>requestFileSystem erlaubt einlesen von Sandboxed dateien!</li>
+                	</ul>
+                </section>
+            </aside>
+            <hgroup>
+                <h2>Sicherheitskonzepte der FileAPI</h2>
+            </hgroup>
+            <article>
+                <ul class="build">
+          			<li>FileWriter hat nur Zugriff auf Sandbox</li>
+          			<li>FileWriter muss Kontingent anfordern</li>
+          			<li>FileReader kann nur vom nutzer gewählte Daten einlesen</li>
+                </ul>
+            </article>
+        </slide>
+
+        <slide>
             <aside class="note">
                 <section>
                     <ul>
@@ -1013,8 +1328,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
             </hgroup>
             <article>
                 <ul>
-                	<li>Todo ...</li>
-                	<li>Demo ...</li>
+                	<li>Beide APIs sind perfekt füreinander gemacht:</li>
                 </ul>
                 <iframe data-src="fileListDndDemo.html" style="max-height:330px;"></iframe>
             </article>
