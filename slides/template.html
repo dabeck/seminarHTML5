@@ -113,16 +113,16 @@ URL: https://code.google.com/p/io-2012-slides
                 <h2>Was ist die Drag & Drop API?</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                    <li>ermöglicht Drag & Drop in jedem* Browser</li>
+                <ul>
+                    <li>Drag & Drop in jedem* Browser</li>
                     <li>
-                        keine externen JavaScript Bibliotheken benötigt
+                        ohne Bibliotheken
                         <ul>
                             <li>kein jQuery</li>
                             <li>kein MooTools</li>
                         </ul>
                     </li>
-                    <li>nahezu jedes Element einer Website beweglich</li>
+                    <li>jedes Element beweglich</li>
                     <li>vieles mehr...</li>
                 </ul>
             </article>
@@ -143,12 +143,12 @@ URL: https://code.google.com/p/io-2012-slides
                 <h2>geschichtlicher Hintergrund</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                    <li>stammt ursprünglich aus dem Internet Explorer 5</li>
-                    <li>galt als missraten</li>
+                <ul>
+                    <li>stammt vom Internet Explorer 5</li>
+                    <li>missraten</li>
                     <li>Grund für die Aufnahme:</li>
-                    <ul class="build">
-                        <li>Safari und Firefox übernahmen die Techologie vom IE*</li>
+                    <ul>
+                        <li>Safari und Firefox übernahmen die Techologie</li>
                         <li>Standardisierung bestehender Techniken</li>
                     </ul>
                 </ul>
@@ -176,15 +176,15 @@ URL: https://code.google.com/p/io-2012-slides
                 <h2>Was machte eine Implementierung nötig?</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                    <li>mehr Möglichkeiten als nur Text und Bilder verschieben:</li>
-                    <ul class="build">
-                        <li>Cross-Website Drag & Drop</li>
-                        <li>Cross-Browser Drag & Drop</li>
-                        <li>Browser-Betriebsystem Drag & Drop</li>
+                <ul>
+                    <li>mehr Möglichkeiten:</li>
+                    <ul>
+                        <li>Cross - Website</li>
+                        <li>Cross - Browser</li>
+                        <li>Browser - Betriebsystem</li>
                     </ul>
-                    <li>ausgeklügeltere Formen des Datentransfers beim Drag & Drop:</li>
-                    <ul class="build">
+                    <li>ausgeklügeltere Formen des Datentransfers:</li>
+                    <ul>
                         <li>Welche Art von Element/Daten wird verschoben?</li>
                         <li>Wohin dürfen bestimmte Elemente gezogen werden?</li>
                     </ul>
@@ -196,8 +196,9 @@ URL: https://code.google.com/p/io-2012-slides
             <aside class="note">
                 <section>
                     <ul>
-                        <li>Speziell für komplexere Anwendungsfälle geeignet.</li>
-                        <li>JavaScript für einfache Anwendungsfälle immernoch ausreichend</li>
+                        <li>für komplexere Anwendungsfälle</li>
+                        <li>JavaScript Bibs für einfache Anwendungsfälle immernoch ausreichend</li>
+                        <li>Tastenkombinationen bei Drag&Drop</li>
                     </ul>
                 </section>
             </aside>
@@ -205,12 +206,12 @@ URL: https://code.google.com/p/io-2012-slides
                 <h2>Die Unterschiede zu den Möglichkeiten mit JS</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                    <li>Webseiten werden untereinander interoperabel</li>
-                    <li>Desktop- und Onlineapplikationen werden kompatibel</li>
-                    <li>Betriebsystemfunktionen wie Tastenkombinationen bei Drag&Drop sind möglich.</li>
-                    <li>Zusammenarbeit mit der File-API erlaubt einfache Datei-Uploads</li>
-                    <li>man ist auf keine externen Bibliotheken angewiesen</li> 
+                <ul>
+                    <li>Webseiten interoperabel</li>
+                    <li>Desktop- und Online kompatibel</li>
+                    <li>Betriebsystemfunktionen möglich</li>
+                    <li>einfache Datei-Uploads</li>
+                    <li>keine Bibliotheken</li> 
                 </ul>
             </article>
         </slide>
@@ -225,10 +226,10 @@ URL: https://code.google.com/p/io-2012-slides
             </aside>
             <hgroup>
                 <h2>Implementierung</h2>
-                <h3>mit MooTools (JavaScript)</h3>
+                <h3>mit MooTools (JavaScript Bibliothek)</h3>
             </hgroup>
             <article>
-                <p>Drag & Drop des Element 'dragme' auf Element 'dropme' mit wenigen Zeilen:</p>
+                <p>Drag & Drop mit wenigen Zeilen:</p>
                 
 <pre class="prettyprint" data-lang="html">
 &lt;div id="dragme"&gt;&lt;/div&gt;
@@ -257,10 +258,10 @@ URL: https://code.google.com/p/io-2012-slides
             </aside>
             <hgroup>
                 <h2>Implementierung</h2>
-                <h3>mit MooTools (JavaScript)</h3>
+                <h3>mit MooTools (JavaScript Bibliothek)</h3>
             </hgroup>
             <article>
-                <p>Demo der MooTools-Implementierung:</p>
+                <p>Demo:</p>
                 <div class="centered" style="margin-top:2em">
                     <iframe data-src="dndDemoMootools.html" style="height:120px;width:410px;"></iframe>
                 </div>
@@ -274,6 +275,7 @@ URL: https://code.google.com/p/io-2012-slides
                         <li>Wie sieht es nun mit der API aus?</li>
                         <li>Es gibt sieben drag events!</li>
                         <li>wichtig sind: dragstart, dragover und drop</li>
+                        <li>Dazu kommt das Attribut draggable</li>
                     </ul>
                 </section>
             </aside>
@@ -282,7 +284,7 @@ URL: https://code.google.com/p/io-2012-slides
                 <h3>mit HTML5</h3>
             </hgroup>
             <article class="smaller">
-                <p>Es gibt ingesamt sieben Events im Zusammenhang mit Drag & Drop:</p>
+                <p>Events im Zusammenhang mit Drag & Drop:</p>
                 <pre class="prettyprint">
 <b>dragstart  //gezogenes Element</b>
 
@@ -298,6 +300,9 @@ dragleave   //vorheriges Ziel-Element
 <b>drop       //aktuelles Ziel-Element</b>
 
 dragend     //gezogenes Element 
+</pre>
+                <pre class="prettyprint">
+draggable   //Attribut
 </pre>
 
             </article>
@@ -362,8 +367,7 @@ dragend     //gezogenes Element
                     <h2>Implementierung</h2>
                     <h3>mit HTML5</h3>
                 </hgroup>
-                <article style="margin:0;">
-                    <p>Des Weiteren muss man mit CSS-Tricks arbeiten:</p>
+                <article>
 <pre class="prettyprint" data-lang="css">
 #container {
     background: #DDD;
@@ -402,7 +406,7 @@ dragend     //gezogenes Element
                 <h3>mit HTML5</h3>
             </hgroup>
             <article>
-                <p>Demo der HTML5-Implementierung:</p>
+                <p>Demo:</p>
                 <div class="centered" style="margin-top:2em">
                     <iframe data-src="dndDemoHtml5.html" style="height:150px;width:410px;"></iframe>
                 </div>
@@ -419,10 +423,10 @@ dragend     //gezogenes Element
                 <h2>Warum nun eine Implementierung mit der API?</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                    <li>alle Browser arbeiten mit der gleichen Schnittstelle*</li>
-                    <li>alle Websiten nutzen die gleiche Schnittstelle*</li>
-                    <li>die Ausführgeschwindigkeit ist deutlisch schneller</li>
+                <ul>
+                    <li>Browser einheitlich*</li>
+                    <li>Websiten einheitlich*</li>
+                    <li>Ausführgeschwindigkeit</li>
                 </ul>
                 <footer class="source">
                 * in der Theorie
@@ -602,6 +606,8 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
             <aside class="note">
                 <section>
                     <ul>
+                    	<li>Für einfache Anwendungungen unpraktikabel</li>
+                    	<li>am Besten eine Mischung aus Bib und API nutzen</li>
                     </ul>
                 </section>
             </aside>
@@ -610,13 +616,13 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h3>Fazit</h3>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>Kompliziert einzusetzen</li>
                     <li>mehr Möglichkeiten</li>
                     <li>Kompatibilitätsvorteile</li>
                     <li>Performancevorteile</li>
-                    <li>für einfache Anwendungen unpraktikabel</li>
-                    <li>am besten eine Mischung aus Bibliothek und DnD API verwenden</li>
+                    <li>unpraktikabel</li>
+                    <li>die Mischung machts</li>
                 </ul>
             </article>
         </slide>
@@ -627,12 +633,12 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h3>File API</h3>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>Was ist die File API?</li>
                     <li>Wie wurden bisher Dateien verarbeitet?</li>
                     <li>Was wurde mit der File API verbessert?</li>
                     <li>Möglichkeiten
-                        <ul class="build">
+                        <ul>
                             <li>einfache Beispiele</li>
                             <li>Unterschiede bei Browsern</li>
                         </ul>
@@ -679,7 +685,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h2>Wie wurden bisher Dateien verarbeitet?</h2>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>sehr primitiv</li>
                     <li>Datei auswählen</li>
                     <li>Formular absenden</li>
@@ -705,7 +711,7 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h2>Was wurde mit der File API verbessert?</h2>
             </hgroup>
             <article>
-                <ul class="build">
+                <ul>
                     <li>FileLists
                     	<ul>
                     		<li>File-Objekte</li>
@@ -746,7 +752,6 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
             </hgroup>
             <article>
                 <ul>
-                	<li>Auswahl der Datei über input oder Drag & Drop</li>
                 	<li>FileList-Objekt repräsentiert Datei(en)</li>
                 </ul>
 
@@ -791,8 +796,8 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>Jede Datei wird zunächst als BLOB abgebildet</li>
-                	<li>Quasi eine art Rohdaten-Objekt</li>
+                	<li>Datei wird zunächst als BLOB abgebildet</li>
+                	<li>eine art Rohdaten-Objekt</li>
                 	<li>BLOB: Binary Large Object</li>
                 	<li>File-Object "erbt" von Blob</li>
                 	<li>seltener benötigt</li>
@@ -813,7 +818,7 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>Dateien werden durch File-Object repräsentiert</li>
+                	<li>durch File-Object repräsentiert</li>
                 	<li>Abkömmlinge von Blobs</li>
                 	<li>bieten zusätzliche Methoden und Eigenschaften</li>
                 </ul>
@@ -883,15 +888,15 @@ readAsText(file, [, charset]);		//Inhalt als Text einlesen
             </hgroup>
             <article>
                 <ul>
-                	<li>Einlesevorgang ist bei allen Methoden gleich:
+                	<li>Einlesevorgang:
                 		<ul>
-                			<li>FileReader beginnt Objekt einzulesen</li>
-                			<li>Status des Objekts ändert sich während dessen</li>
-                			<li>eingelesener Inhalt wird in "result" bereit gestellt</li>
+                			<li>Objekt einlesen</li>
+                			<li>Status aktualisieren</li>
+                			<li>"result" bereit gestellt</li>
                 		</ul>
                 	</li><br>
-                	<li>während dem Vorgang lässt sich der Status abfragen</li>
-                	<li>der Vorgang läuft grundsätzlich asynchron ab</li>
+                	<li>Status lässt sich abfragen</li>
+                	<li>asynchroner ablauf</li>
                 </ul>
             </article>
         </slide>
@@ -901,7 +906,7 @@ readAsText(file, [, charset]);		//Inhalt als Text einlesen
                 <section>
                     <ul>
                         <li>Was bietet der FileReader?</li>
-                        <li>Es gibt 6 file events!</li>
+                        <li>6 File-events!</li>
                         <li>wichtig sind: progress und load</li>
                         <li>vorsicht es geht hier NUR um lokalen progress/events! dies hat nichts mit upload zu tun</li>
                     </ul>
@@ -913,7 +918,7 @@ readAsText(file, [, charset]);		//Inhalt als Text einlesen
             </hgroup>
             <article>
             	<br>
-                <p>Es gibt ingesamt sechs Events im Zusammenhang mit dem FileReader:</p>
+                <p>Es gibt sechs Events beim FileReader:</p>
                 <pre class="prettyprint">
 loadstart  //wenn der Einleiseprozess startet
 
@@ -1098,8 +1103,8 @@ document.getElementById('upload').onchange = function() {
             </hgroup>
             <article>
                 <ul>
-                	<li>stellt Methoden zum schreiben bereit</li>
-                	<li>schreiben von Temporären oder Persistenten Daten</li>
+                	<li>Methoden zum schreiben</li>
+                	<li>Temporär oder Persistent</li>
                 	<li>aktuell noch Experimentell</li>
                 </ul>
             </article>
@@ -1109,6 +1114,10 @@ document.getElementById('upload').onchange = function() {
         	<aside class="note">
                 <section>
                 	<ul>
+                	<li>Zunächst muss ein "FileSystemRequest" gestartet werden</li>
+            		<li>damit fordert man Speicher an</li>
+            		<li>ist dies erfolgt wird initFS(fs); gerufen</li>
+            		<li>jetzt hat man Zugriff auf eine Sandbox</li>
                 	</ul>
                 </section>
             </aside>
@@ -1117,11 +1126,11 @@ document.getElementById('upload').onchange = function() {
                 <h3>FileWriter</h3>
             </hgroup>
             <article>
-            	<ul class="build">
-            		<li>Zunächst muss ein "FileSystemRequest" gestartet werden</li>
-            		<li>damit fordert man Speicher an</li>
-            		<li>ist dies erfolgt wird initFS(fs); gerufen</li>
-            		<li>jetzt hat man Zugriff auf eine Sandbox</li>
+            	<ul>
+            		<li>"FileSystemRequest"</li>
+            		<li>Speicher anfordern</li>
+            		<li>ruft initFS(fs);</li>
+            		<li>Sandbox Zugriff</li>
             	</ul>
             </article>
         </slide>
@@ -1258,10 +1267,10 @@ function initFS(fs){
                 <h2>Sicherheitskonzepte der FileAPI</h2>
             </hgroup>
             <article>
-                <ul class="build">
-          			<li>FileWriter hat nur Zugriff auf Sandbox</li>
-          			<li>FileWriter muss Kontingent anfordern</li>
-          			<li>FileReader kann nur vom nutzer gewählte Daten einlesen</li>
+                <ul>
+          			<li>Zugriff nur auf Sandbox</li>
+          			<li>Kontingent muss angefordert werden</li>
+          			<li>nur Zugriff auf gewählte Dateien</li>
                 </ul>
             </article>
         </slide>
@@ -1343,8 +1352,11 @@ Microsoft     Outlook     Netflix     Mockingbird     Gmail     dropbox     twit
                 <h2>Fazit</h2>
             </hgroup>
             <article>
-                <ul class="build">
-                	<li>Todo ...</li>
+                <ul>
+                	<li>ohne Bibliotheken hat man es schwer</li>
+                	<li>Dateibehandlung mit Drag & Drop super</li>
+                	<li>FileWriter noch nicht zu gebrauchen</li>
+                	<li>...</li>
                 </ul>
             </article>
         </slide>
